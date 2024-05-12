@@ -3,7 +3,7 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 from . import views
-from .restapis import get_request, analyze_review_sentiments, post_review
+
 
 app_name = 'djangoapp'
 urlpatterns = [
@@ -12,8 +12,7 @@ urlpatterns = [
     # path for login
     path(route='login', view=views.login_user, name='login'),
     path(route='logout', view=views.logout_request, name='logout'),
-    
-    path(route='get_cars', view=views.get_cars, name ='getcars'),
+    path(route='get_cars', view=views.get_cars, name='getcars'),
     path(route='get_dealers', view=views.get_dealerships, name='get_dealers'),
     path(route='get_dealers/<str:state>', view=views.get_dealerships, name='get_dealers_by_state'),
     # path for dealer reviews view
