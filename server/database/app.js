@@ -1,4 +1,5 @@
 /*jshint esversion: 6 */
+/*jshint esversion: 8 */
 const express = require('express');
 const mongoose = require('mongoose');
 const fs = require('fs');
@@ -33,7 +34,6 @@ try {
 
 
 // Express route to home
-/*jshint esversion: 8 */
 app.get('/', async (req, res) => {
     res.send("Welcome to the Mongoose API");
 });
@@ -63,7 +63,7 @@ app.get('/fetchDealers', async (req, res) => {
 //Write your code here
 try {
     const documents = await Dealerships.find();
-    res.json(documents)
+    res.json(documents);
 } catch (error) {
     res.status(500).json({ error: 'Error fetching documents' });
 }
@@ -96,7 +96,7 @@ try {
 app.post('/insert_review', express.raw({ type: '*/*' }), async (req, res) => {
   data = JSON.parse(req.body);
   const documents = await Reviews.find().sort( { id: -1 } );
-  let new_id = documents[0]['id'] + 1;
+  let new_id = documents[0].id + 1;
 
   const review = new Reviews({
 		"id": new_id,
